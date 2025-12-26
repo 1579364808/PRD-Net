@@ -1,6 +1,6 @@
-# Multimodal Sentiment Analysis Projects
+# PRD-Net: Prototype Rectification and Denoising Network for Robust Multimodal Sentiment Analysis with Incomplete Data
 
-This repository contains implementations of several Multimodal Sentiment Analysis models.
+This is the official repository for the paper: **PRD-Net: Prototype Rectification and Denoising Network for Robust Multimodal Sentiment Analysis with Incomplete Data**.
 
 ## Projects
 
