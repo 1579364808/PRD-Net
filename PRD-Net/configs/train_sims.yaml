@@ -1,0 +1,72 @@
+base:
+  seed: 1111
+  lr: 0.0001
+  bert_lr: 0.00001
+  weight_decay: 0.0001
+  batch_size: 32
+  n_epochs: 100
+  num_workers: 8
+  gamma: 0.1
+  sigma: 1.0
+  train_mode: regression
+  missing_rate_eval_test: 0.5
+  do_validation: true
+  gradient_accumulation_steps: 1
+  use_unimodal_vib: true
+  use_multimodal_vib: true
+  use_poe_fusion: true
+  use_reconstructor: true
+  use_prm: true
+  use_uglr: true
+  beta_uni: 1
+  alpha_uni: 0.1
+  beta_multi: 1
+  alpha_multi: 0.1
+  beta_warmup_epochs: 10
+  eta: 0.1
+  lambda_rect: 0.1
+
+dataset:
+  datasetName: sims
+  dataPath: ./datasets/CH-SIMS/Processed/unaligned_39.pkl
+
+model:
+  feature_extractor:
+    bert_pretrained: 'bert-base-chinese'
+    input_length: [39, 55, 400]
+    token_length: [8, 8, 8]
+    heads: 8
+    input_dims: [768, 709, 33]
+    hidden_dims: [128, 128, 128]
+    depth: 2
+  prm:
+    dim: 128
+    codebook_size: 128
+    depth: 3
+    heads: 4
+    dim_head: 32
+    mlp_dim: 256
+    dropout: 0.1
+    num_latents: 8
+    decay: 0.99
+    temperature: 0.1
+    commitment_weight: 0.25
+    retrieval_top_k: 32
+    share_perceiver: false
+  uglr:
+    latent_dim: 128
+    text_dim: 128
+    audio_dim: 128
+    video_dim: 128
+    embed_dim: 128
+    num_layers: 3
+    attn_dropout: 0.5
+  reconstructor:
+    input_length: 8
+    depth: 2
+    heads: 8
+    input_dim: 128
+    hidden_dim: 128
+  regression:
+    input_dim: 128
+    out_dim: 1
